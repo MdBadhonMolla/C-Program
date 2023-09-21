@@ -16,8 +16,9 @@ int function(int a)
 int main()
 {
 	int input, givingYear=0,counter=0;
-	printf("\tEnter a Year : ");
+	printf("\n\tEnter a Year : ");
 	scanf("%d",&input);
+	printf("\n");
 	givingYear = function(input);
 
 
@@ -29,11 +30,16 @@ int main()
     char *day[]={"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
     int size_day= sizeof(day)/sizeof(day[0]);
 
-    int *mounth_day[]={31,28,31,30,31,30,31,30,31,30,31,30};
+    int *mounth_day[]={31,28,31,30,31,30,31,31,30,31,30,31};
+
+
+    if ((input % 4 == 0 && input % 100 != 0) || (input % 400 == 0)) {
+        mounth_day[1] = 29;
+    }
 
 
 
-int i,j, count=0,z=0;
+	int i,j, count=0,z=0;
 
 
 
@@ -46,11 +52,11 @@ int i,j, count=0,z=0;
         for(j=0; j<size_day; j++){
             printf("%s\t",day[j]);
 
-        }printf("\n\n");
+        }printf("\n\n\n");
 
             for(int b=1; b<count; b++){
 
-                printf("#\t");
+                printf(" \t");
                 z++;
             }
 
@@ -59,7 +65,7 @@ int i,j, count=0,z=0;
 					if(i==0 && givingYear>counter)
 					{
 						counter++;
-						printf("#\t");
+						printf(" \t");
 						z++;
 						a=0;
 						continue;
@@ -67,7 +73,7 @@ int i,j, count=0,z=0;
                 printf("%d\t",a);
                 z++;
                 if(z%7==0){
-                    printf("%d\n",z);
+                    printf("\n\n");
                     count=0;
                     z=0;
                 }count++;
